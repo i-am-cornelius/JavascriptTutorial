@@ -1,28 +1,26 @@
 let car = {
+    // properties
     make: "Mercedes Benz",
-
-    model: "Maybach",
-
+    model: "S63 AMG",
     year: 2020,
 
+    // Methods
     getAgeOfCar: function (year) {
         return 2021 - year;
     },
 
     printReceipt: function () {
-        console.log(`This ${this.make} ${this.model} is worth $ ${this.price}`);
+        console.log(`This ${this.make} ${this.model} is worth $${this.price}`);
 
     }
-
 };
 
+// Access the properties using dot notation(.) or brackets []
 console.log(car.year);
-// properties can also be accessed using array [] accessor 
 console.log(car['year'])
-
 console.log(car.getAgeOfCar(2016));
 
-car.price = 200000
+car.price = 200000 
 
 car.printReceipt();
 
@@ -47,8 +45,8 @@ console.log(typeof student);
 // creating objects inside objects
 
 let people = {
-    mrWalke: "male",
-    mrsLaura: "female",
+    mr_Walker: "male",
+    mrs_Laura: "female",
     students: {
         name: "samantha",
         gender: "female",
@@ -62,20 +60,7 @@ console.log(typeof people.students);
 
 let example = {
     arr: [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        {
-            a: "this"
-        },
-        {
-            b: "can"
-        },
+        1, 2, 3, 4, 5, 6, 7, 8, { a: "this"}, {b: "can" },
         {
             c: 'get'
         },
@@ -90,29 +75,29 @@ console.log(typeof example);
 
 const studentData = [{
     id: 1,
-    name: "Kirk",
+    name: "Ade",
     gender: "Male",
     age: 20,
-    college: {
-        nameOfCollege: 'Humanities',
+    faculty: {
+        name_of_faculty: 'Humanities',
         department: 'Archeology',
         level: 300
     }
 },
 {
     id: 2,
-    name: "Karen",
+    name: "Tiwa",
     gender: "Female",
     age: 19,
-    college: {
-        nameOfCollege: "Engineering",
+    faculty: {
+        name_of_faculty: "Engineering",
         department: "Aeronautics",
         level: 200
     }
 },
 
 ];
-console.log(studentData[0].college.nameOfCollege);
+console.log(studentData[0].faculty.name_of_faculty);
 //console.log(studentData);
 //console.log(typeof studentData);
 console.log(JSON.stringify(studentData)); // creates a JSON format of the object

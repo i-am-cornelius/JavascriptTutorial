@@ -1,15 +1,14 @@
 // Arrow function is a shorthand syntax for creating functions
 
 // This is the traditional function
-function nameOfFunction(parameters) {
+/*function nameOfFunction(parameters) {
     // Body of the function
 }
 
-// The all-new Arrow funtions
-
-const nameOfFunctions = (parameter) => {
+// Arrow functions
+const nameOfFunction = (parameter) => {
     // Body of function
-}
+}*/
 
 const greet = (name) => {
     return console.log(`Hi ${name}`);
@@ -31,10 +30,15 @@ cities.map((city) => {
 console.log(cities);
 
 // The 'map' method can be assigned to a variable to create a new array entirely.
-let countries = ['Lichenstein', 'Albania', 'Estonia', 'Slovenia', 'Luxembourg'];
+let countries = ['Lichtenstein', 'Albania', 'Estonia', 'Slovenia', 'Luxembourg'];
 let newArray = countries.map((country) => {
     return `${country} is an European country`
 });
 
 console.log(newArray);
 console.log(countries);
+
+const get_index = (arr, index) => {
+    return arr[index];
+}
+console.log(get_index(cities, 1));

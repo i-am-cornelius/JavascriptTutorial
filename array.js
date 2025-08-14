@@ -2,7 +2,6 @@ const number = [3, 4, 44, 54, 56, 2, 40];
 const names = ["Samuel", "Rose", "Ashley", "Laura", "Cornelius"];
 
 // Arrays are of type object
-
 console.log(typeof number);
 console.log(number);
 
@@ -10,11 +9,6 @@ console.log(names[2]);
 
 names[1] = 'Olivia';
 console.log(names);
-
-/*
-Although an array may be similar to objects, array may hold a list of data not related to each other.
-While an object holds the related properties of a single data element in the form of name/value pairs
-*/
 
 const combo = ['July', 4, true, 17.76];
 console.log(combo);
@@ -25,8 +19,7 @@ combo.push(44);
 console.log(combo);
 console.log(combo.length);
 
-// Arrays can also hold objects as values
-
+// Arrays can also contain object literals
 const tests = [{
     id: 1,
     text: "this",
@@ -60,48 +53,48 @@ for (let test of tests) {
     console.log(test.id);
 };
 
-
-const myTest = tests.forEach(
+// if the foreach is assigned to a variable, it will print undefined at the end. if return is used in the foreach only undefined is printed
+/* const myTest = tests.forEach( 
     function (tests) {
       console.log('this is ' + tests.id);
     }
 );
+console.log(myTest); 
+*/
 
-console.log(myTest);
+// This is better
+tests.forEach(function (test) {
+  console.log('this is ' + test.id);
+});
 
+// outputs the text for all the objects
 const myMap = tests.map(
     function (tests) {
         return tests.text;
     }
 );
+console.log(myMap); 
 
-console.log(myMap);
-
-// array methods can also be attached to each other
-
+// outputs all the text of the object whose isTrue = true
 const myFilter = tests.filter(
     function (tests) {
     return tests.isTrue === true
 }
-).map( // map method is attached to the filter method here
+).map(
     function (tests) {
         return tests.text;
     }
 );
-
 console.log(myFilter);
 
-// Arrays can also be created using the 'Constructor' function
-// this is possible because arrays are typeof object
-
-const stars = new Array('Acturus', 'Betelgeuse', 'Sun', 'Uy scuti', 'Sirius');
+// Arrays can also be created using the 'Constructor' function this is possible because arrays are typeof object
+const stars = new Array('Arcturus', 'Betelgeuse', 'Sun', 'Uy Scuti', 'Sirius');
 
 console.log(typeof stars);
 console.log(stars);
 console.log(stars[2]);
 
 // Multi-dimensional arrays; these are array that contain other arrays
-
 let pets = [
     ['Cat', 'Lily', 2], 
     ['Dog', 'Venus', 1], 
@@ -109,7 +102,6 @@ let pets = [
 ];
 
 // Or they arrays can be created differently and then joined together
-
 let mountains = ['Kilimanjaro', 'Everest', 'Rushmore'];
 let rivers = ['Nile', 'Amazon', 'Colorado'];
 let lakes = ['Baikal', 'Superior', 'Chad'];
@@ -119,7 +111,7 @@ let nature = [mountains, rivers, lakes];
 console.log(pets);
 console.log(nature);
 
-pets.push(['Snake', 'Shasnaka', 2, 'Female', isBig = true]);
+pets.push(['Dog', 'Alexei', 4, 'Male', isBig = true]);
 console.log (pets);
 
 let selection = nature[0]

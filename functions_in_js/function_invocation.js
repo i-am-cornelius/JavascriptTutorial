@@ -6,7 +6,7 @@ const firstFunction = () => {
 }
 
 const secondFunction = () => {
-    const river = 'yangste';
+    const river = 'Yangtze';
     firstFunction();
     console.log(river);
     

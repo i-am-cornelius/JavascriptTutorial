@@ -1,6 +1,9 @@
+/*Inheritance in Javascript is quite unique because it uses prototypal inheritance; which means object first rather than class first in 
+other languages. Before classes were added to Js in ES6, OOP is implemented in the language using functions that can */
+
 let parentCar = {
     make: 'Mercedes-Benz',
-    model: 'Maybach',
+    model: 'S63 AMG',
     year: 2020,
 };
 

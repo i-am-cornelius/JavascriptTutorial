@@ -24,7 +24,7 @@ console.log(x);
 
 //console.log(y); */
 
-/* In the example below, the code will throw a refrence error because we used let keyword to declare the variables, but
+/* In the example below, the code will throw a reference error because we used let keyword to declare the variables, but
 if we switch the let keyword to var it will become undefined because of var's nuanced nature of being somehow available 
 even before it is declared 
  */
@@ -34,3 +34,20 @@ function example() {
   let a = 2;
 }
 example();
+
+
+let b = "This is in the global scope";
+function outer () {
+    let b = "inside the outer function scope";
+    console.log(b);
+
+    function inner (){
+        let b = "inside the inner function scope";
+        console.log(b);
+    }
+    inner();
+
+}
+outer();
+
+console.log(b);

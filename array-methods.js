@@ -1,28 +1,20 @@
 let countries = ['Taiwan', 'Austria', 'Japan', 'Sweden', 'Finland'];
-let rivers = ['missisipi', 'amazon', 'nile', 'congo', 'yangste'];
+let rivers = ['mississippi', 'amazon', 'nile', 'congo', 'yangtze'];
 
 let ages = [4, 5, 6, 12, 20, 34, 42, 1];
-let figures = [1, 1, 2, 22, 4, 7, 89, 76];
+let figures = [1, 100, 200, 2, 22, 4, 7, 89, 76];
 
 // concat
 let myConcat = ages.concat(figures);
 console.log(myConcat);
 
-// every
-console.log(
-    myConcat.every(
-        (numbers) =>
-        numbers < 100
+// every (boolean output)
+console.log(myConcat.every((number) => number < 15)) // false not all the elements are less than 15
 
-    )
-) // the 'some' method can also be used the same way
 
-console.log(
-    myConcat.some(
-        (number) =>
-        number > 100
-    )
-)
+// some (boolean output)
+ const x = myConcat.some((number) => number > 90); // true some of the elements are greater than 90
+ console.log(x); 
 
 // join
 let myJoin = ages.join('/');
@@ -45,7 +37,7 @@ console.log(countries);
 
 // methods can also be used directly without creating a new variable e.g
 console.log(rivers.concat(figures));
-console.log(countries.push('Ukraine'));// this line returns just the lenght of the array countries
+console.log(countries.push('Ukraine'));// this line returns just the length of the array countries
 console.log(countries); 
 
 // shift

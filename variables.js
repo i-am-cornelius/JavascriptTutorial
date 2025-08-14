@@ -3,7 +3,7 @@ let y = 8;
 let z = x + y;
 console.log(x + ' plus ' + y + ' is equal to ' + z); 
 
-// using string concantenation
+// using string concatenation
 
 console.log(`${x} plus ${y} is equal to ${z}`);
 
@@ -64,10 +64,3 @@ console.log(++a);
 
 let test = 3 ** 4;
 console.log(test);
-
-
-
-
-
-
-// Written using python file write// Written using python file write// Written using python file write// Written using python file write// Written using python file write// Written using python file write
