@@ -119,3 +119,20 @@ console.log(selection);
 
 let selection_1 = nature[1][2];
 console.log(selection_1);44
+
+
+const calculate_sum = (arr) => {
+    let sum = 0;
+    let expensive = 0;
+    for(const i in arr) {
+        sum += arr[i];
+        if (arr[i] > 500) {
+            expensive++;
+        }
+    }
+    console.log(`${expensive} items are expensive`);
+    console.log(sum);
+}
+
+let prices = [200, 1200, 350, 900, 450, 600];
+calculate_sum(prices);
