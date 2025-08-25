@@ -1,10 +1,13 @@
 // Synchronous programming is a style of program execution where commands are executed one after another in a linear model(line by line)
+// Javascript by default is single threaded(synchronous)
+// Synchronous execution
 console.log('first');
 console.log('second');
 console.log('third');
 console.log('fourth');
 console.log('='.repeat(20));
 
+// Asynchronous execution
 console.log('first');
 setTimeout(() => {
     console.log('second');

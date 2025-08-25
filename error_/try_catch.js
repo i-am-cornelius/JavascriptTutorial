@@ -166,35 +166,88 @@ function promiseExample() {
 class ValidationError extends Error {
   constructor(field, value) {
     super(`Validation failed for field '${field}' with value '${value}'`);
-    this.name = 'ValidationError';
+    this.name = "ValidationError";
     this.field = field;
     this.value = value;
   }
 }
 
-function validateUser(user) {
+class ApiError extends Error {
+  constructor(message, statusCode) {
+    super(message);
+    this.name = "ApiError";
+    this.statusCode = statusCode;
+  }
+}
+
+// Validate Function
+function validate_user(user) {
   try {
-    if (!user.email || !user.email.includes('@')) {
-      throw new ValidationError('email', user.email);
+    if (!user.email || !user.email.includes("@")) {
+      throw new ValidationError("email", user.email);
     }
-    
+
     if (!user.age || user.age < 0 || user.age > 120) {
-      throw new ValidationError('age', user.age);
+      throw new ValidationError("age", user.age);
     }
-    
-    console.log("User validation successful!");
+
+    if (!user.password || user.password.length < 6) {
+      throw new ValidationError("password", user.password);
+    }
+
+    console.log("✅ User validation successful!");
     return true;
+
   } catch (error) {
     if (error instanceof ValidationError) {
-      console.error(`Custom validation error - Field: ${error.field}, Value: ${error.value}`);
+      console.error(`❌ Validation error - Field: ${error.field}, Value: ${error.value}`);
       console.error(`Message: ${error.message}`);
     } else {
-      console.error("Unexpected error:", error.message);
+      console.error("❌ Unexpected error:", error.message);
     }
     return false;
   }
 }
 
-validateUser({ email: "john@example.com", age: 25 }); // Valid
-validateUser({ email: "invalid-email", age: 25 });    // Invalid email
-validateUser({ email: "john@example.com", age: -5 });  // Invalid age
+// Simulate an API Request 
+function api_request(endpoint, data, shouldSucceed = true) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldSucceed) {
+        resolve({ status: 200, data: { message: "Request successful", payload: data } });
+      } else {
+        reject(new ApiError("Server failed to process request", 500));
+      }
+    }, 1000);
+  });
+}
+
+// Register User Flow
+async function register_user(user, retryCount = 0, maxRetries = 3) {
+  if (!validate_user(user)) return; // stop if validation fails
+
+  try {
+    const response = await api_request("/register", user, false); // simulate failure
+    console.log("✅ API Response:", response.data);
+
+  } catch (err) {
+    if (err instanceof ApiError && retryCount < maxRetries) {
+      console.error(`❌ API Error (status ${err.statusCode}):`, err.message);
+      console.log(`⚠️ Retrying in 2 seconds... attempt ${retryCount + 1}/${maxRetries}`);
+      setTimeout(() => register_user(user, retryCount + 1, maxRetries), 2000);
+    } else if (err instanceof ApiError) {
+      console.error("❌ Max retries reached. Request failed permanently.");
+    } else {
+      console.error("❌ Unknown error:", err.message);
+    }
+  }
+}
+
+
+validate_user({ email: "john@example.com", age: 25, password: "strongPass" }); // ✅ Valid
+validate_user({ email: "invalid-email", age: 25, password: "abcdef" });       // ❌ Invalid email
+validate_user({ email: "john@example.com", age: -5, password: "abcdef" });    // ❌ Invalid age
+validate_user({ email: "john@example.com", age: 25, password: "123" });       // ❌ Invalid password
+
+// Trigger API call (valid user)
+register_user({ email: "john@example.com", age: 25, password: "securePass" });

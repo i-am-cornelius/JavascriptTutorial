@@ -26,7 +26,6 @@ fetch("https://jsonplaceholder.typicode.com/posts/1")
   });
 
 
-
 // I make it clearer and put it inside a function to allow passing the id as argument
 function fetchPostById(id) {
   // Step 1: Call fetch → returns a Promise
