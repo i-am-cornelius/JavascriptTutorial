@@ -1,3 +1,40 @@
+/* Currying is a technique in functional programming that is used to break down a function that takes multiples arguments into a 
+family of nested functions that take a single argument each. This makes the program more reusable and broken down than a single
+function. */
+// Ordinary function that takes multiple arguments
+function add(a, b, c) {
+    return a + b + c;
+}
+console.log(add(3, 4, 5));
+
+// Currying
+function add_1(a) {
+    return (b) => {
+        return (c) => {
+            return a + b + c;
+        }
+    }
+}
+// Using the curry function
+// 1.  easiest
+console.log("Easiest call():", add_1(4)(6)(8));
+
+// 2. Step-by-step assignment (I think this is better for explaining the process)
+const step_1 = add_1(4);        // Returns function that expects b
+const step_2 = step_1(6);        // Returns function that expects c
+const result_1 = step_2(8);      // Returns final result
+console.log("Step by step:", result_1);
+
+// 3. Partial application with variable names that describe them
+const add_four_to = add_1(4);    // Partially applied function
+const add_four_and_six_to = add_four_to(6);  // Further partially applied
+console.log("Partial application:", add_four_and_six_to(8));
+
+// 4. Storing intermediate functions for reuse
+const add_twenty = add_1(20);      // Add 20 to whatever comes next
+console.log("Add 20 + 2 + 3:", add_twenty(2)(3));
+console.log("Add 20 + 5 + 7:", add_twenty(5)(7));
+
 // 1. PARTIAL APPLICATION & REUSABILITY
 
 // Curried function for calculating discounts
@@ -19,13 +56,13 @@ console.log("Senior price for $50 item:", senior_discount(50));
 // 2. FUNCTION COMPOSITION
 // Curried utility functions
 const multiply = (x) => (y) => x * y;
-const add = (x) => (y) => x + y;
+const add_util = (x) => (y) => x + y;
 const subtract = (x) => (y) => y - x; // Note: y - x for proper composition
 
 // Create specialized functions
 const double = multiply(2);
 const triple = multiply(3);
-const add_ten = add(10);
+const add_ten = add_util(10);
 const subtract_five = subtract(5);
 
 console.log("\nFunction Composition Example:");
