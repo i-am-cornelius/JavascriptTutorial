@@ -3,7 +3,7 @@ function message() {
     console.log("Hello World!");
 };
 
-console.log(calculateTax(450));
+console.log(calculate_tax(450));
 /* function are first class citizens they can be called before where they are
  declared, but the best practice is to declare before used. */
 // the best way to use functions is to return the value instead of hard-coding the console.log
@@ -16,14 +16,13 @@ console.log(greetings("Natalie"));
 console.log(greetings("Erica"));
 
 // performing tasks inside functions
-
-function calculateTax(amount) {
+function calculate_tax(amount) {
     let result = amount * 0.002245;
     return "$ " + result;
 }
 
-console.log(calculateTax(400));
+console.log(calculate_tax(400));
 
 // it can also be assigned to a variable
-const tax = calculateTax(100);
+const tax = calculate_tax(100);
 console.log(tax);
